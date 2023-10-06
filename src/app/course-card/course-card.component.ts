@@ -30,7 +30,13 @@ export class CourseCardComponent {
     if (this.course.category === 'BEGINNER') {
       classes.push('beginner');
     }
-    
+
     return classes;
+  }
+
+  cardStyles = (): any => {
+    return {
+      'text-decoration': 'underline',
+    };
   }
 }

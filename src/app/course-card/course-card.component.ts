@@ -24,4 +24,13 @@ export class CourseCardComponent {
   }
 
   isImageVisible = (): boolean => this.course && this.course.iconUrl !== '';
+
+  cardClasses = (): string[] => {
+    let classes = [];
+    if (this.course.category === 'BEGINNER') {
+      classes.push('beginner');
+    }
+    
+    return classes;
+  }
 }

@@ -22,4 +22,6 @@ export class CourseCardComponent {
 
     this.courseEventEmitter.emit(this.course);
   }
+
+  isImageVisible = (): boolean => this.course && this.course.iconUrl !== '';
 }

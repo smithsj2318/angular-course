@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
+import {CourseCardComponent} from './course-card/course-card.component';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,14 @@ export class AppComponent {
   rxjsCourse = COURSES[1];
   ngrxCourse = COURSES[2];
 
+  //
+  //ViewChild grabs the first instance of the component it finds in the template.
+  //
+  @ViewChild(CourseCardComponent)
+  card: CourseCardComponent;
 
   onCourseSelected = (course: Course) => {
     console.log('Card clicked', course);
+    console.log(this.card);
   }
 }

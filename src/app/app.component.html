@@ -1,31 +1,38 @@
-<div class="top-menu">
+<div>
+  <h1>Section 1 & 2</h1>
+  <div class="top-menu">
 
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+      <img class="logo"
+           src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
+  </div>
+
+  <div class="demo">
+    <div>
+      Start Date: {{startDate | date: 'MM/dd/yyyy'}}
+    </div>
+    <div>
+      Title: {{title | titlecase}}
+    </div>
+    <div>
+      Price: {{price | currency: 'EUR'}}
+    </div>
+  </div>
+
+  <div class="courses">
+    <course-card *ngFor="let course of courses;index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [class.is-first]="isFirst"
+      [class.is-last]="isLast"
+                 [class.is-even]="isEven"
+                  [class.is-odd]="isOdd"
+                 [course]="course" [cardIndex]="i + 1"
+                 (onCourseSelected)="onCourseSelected($event)"></course-card>
+
+  </div>
 </div>
 
-<div class="demo">
-  <div>
-    Start Date: {{startDate | date: 'MM/dd/yyyy'}}
-  </div>
-  <div>
-    Title: {{title | titlecase}}
-  </div>
-  <div>
-    Price: {{price | currency: 'EUR'}}
-  </div>
+<div>
+  <h1>Section 3</h1>
+  <course-card [course]="courses[2]" [cardIndex]="1" (onCourseSelected)="onCourseSelected($event)"></course-card>
 </div>
-
-<div class="courses">
-  <course-card *ngFor="let course of courses;index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd"
-    [class.is-first]="isFirst"
-    [class.is-last]="isLast"
-               [class.is-even]="isEven"
-                [class.is-odd]="isOdd"
-               [course]="course" [cardIndex]="i + 1"
-               (onCourseSelected)="onCourseSelected($event)"></course-card>
-
-</div>
-
 

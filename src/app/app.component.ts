@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
@@ -24,11 +24,19 @@ export class AppComponent {
   //
   //ViewChild grabs the first instance of the component it finds in the template.
   //
-  @ViewChild(CourseCardComponent)
+  @ViewChild('cardRef')
   card: CourseCardComponent;
+
+  @ViewChild('cardRef', {read: ElementRef})
+  cardElement: ElementRef;
+
+  @ViewChild('containerRef')
+  containerDiv: ElementRef;
 
   onCourseSelected = (course: Course) => {
     console.log('Card clicked', course);
     console.log(this.card);
+    console.log(this.containerDiv);
+    console.log(this.cardElement);
   }
 }

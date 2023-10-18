@@ -33,6 +33,7 @@
 
 <div #containerRef>
   <h1>Section 3</h1>
+  <button (click)="onEditCoursesClick()">Edit Course</button>
   <course-card #cardRef [course]="courses[2]" [cardIndex]="1" (onCourseSelected)="onCourseSelected($event)"></course-card>
 </div>
 

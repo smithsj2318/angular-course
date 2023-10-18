@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
@@ -8,7 +8,7 @@ import {CourseCardComponent} from './course-card/course-card.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   courses = COURSES;
 
   startDate = new Date(2000, 0, 1);
@@ -23,6 +23,7 @@ export class AppComponent {
 
   //
   //ViewChild grabs the first instance of the component it finds in the template.
+  // - Only "local" components can be grabbed.
   //
   @ViewChild('cardRef')
   card: CourseCardComponent;
@@ -33,10 +34,23 @@ export class AppComponent {
   @ViewChild('containerRef')
   containerDiv: ElementRef;
 
+  
+
+  constructor() {
+    console.log('constructor - card', this.card);
+  }
+
   onCourseSelected = (course: Course) => {
     console.log('Card clicked', course);
     console.log(this.card);
     console.log(this.containerDiv);
     console.log(this.cardElement);
+  }
+
+  //
+  //First time the ViewChild stuff should be available.
+  //
+  ngAfterViewInit = (): void => {
+    console.log('constructor - card', this.card);
   }
 }
